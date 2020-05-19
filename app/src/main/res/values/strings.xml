@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">Covid19</string>
+
+    <!-- info -->
+    <string name="info">
+        IMPORTANTE: O resultado é gerado a partir das informações que relatar, seguindo as diretrizes do Ministério da Saúde.
+        Este pré-diagnóstico virtual NÃO SUBSTITUI A AVALIAÇÃO CLÍNICA PRESENCIAL por equipe de saúde!
+    </string>
+
+    <!-- sintomas -->
+    <string name="q1">1. Sente FALTA DE AR, DIFICULDADE PARA RESPIRAR?</string>
+    <string name="q2">2. Você está com FEBRE?</string>
+    <string name="q3">3. Você está com TOSSE?</string>
+    <string name="q4">4. Você tem DIFICULDADE para URINAR ou ALTERAÇÃO NA COR/PADRÃO DA URINA?</string>
+    <string name="q5">5. Você tem RASH - MANCHAS ou ERUPÇÕES NA PELE recentes distribuídas pelo corpo ou concentradas em um único local?</string>
+    <string name="q6">6. Sente CANSAÇO, DOR NO CORPO, MAL ESTAR ou SONOLÊNCIA?</string>
+    <string name="q7">7. Sente DOR DE GARGANTA?</string>
+    <string name="q8">8. Sente DOR DE CABEÇA?</string>
+    <string name="q9">9. Tem CORIZA (corrimento nasal) ou NARIZ ENTUPIDO?</string>
+    <string name="q10">10. Tem ESPIRROS?</string>
+    <string name="q11">11. Sente PERDA DO PALADAR (gosto da comida)?</string>
+    <string name="q12">12. Sente PERDA DO OLFATO (cheiros)?</string>
+
+    <!-- resultado -->
+    <string name="resultLow">O pré-diagnóstico apresenta sintomas leves. Por favor, MANTENHA O ISOLAMENTO domiciliar e refaça o pré-diagnóstico se houver alterações.</string>
+    <string name="resultMiddle">Você apresenta características de sintomalogias moderado. Por favor, ENTRE EM CONTATO com o Pronto Atendimento mais próximo de sua residência.</string>
+    <string name="resultHigh">Você apresenta características de sintomalogias elvado. Por favor, ENTRE EM CONTATO com o Pronto Atendimento mais próximo de sua residência.</string>
+
 </resources>

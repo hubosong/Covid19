@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="#eee"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="220dp"
         android:padding="30dp"
-        android:layout_margin="16dp"
-        android:text="PRÉ-DIAGNÓSTICO\nCovid-19"
-        android:textColor="#555"
+        android:textColor="#fff"
         android:textStyle="bold"
         android:textSize="30sp"
         android:textAlignment="center"
+        android:background="@drawable/bg19"
         app:layout_constraintTop_toTopOf="parent"/>
 
 
@@ -69,43 +68,43 @@
                 android:id="@+id/txtQ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1. Você está com FALTA DE AR?"
+                android:text="@string/q1"
                 android:textColor="#555"
-                style="@style/TextAppearance.AppCompat.Large" />
+                style="@style/TextAppearance.AppCompat.Large"
+                android:textAlignment="center"/>
 
             <RadioGroup
                 android:id="@+id/toggle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/rbSIM"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:button="@null"
                     android:background="@drawable/radio_states_green"
                     android:text="SIM"
+                    android:layout_marginEnd="2dp"
                     android:padding="10dp"
                     android:textColor="@drawable/radio_text"
-                    android:layout_weight=".335"
                     android:gravity="center"/>
 
                 <RadioButton
                     android:id="@+id/rbNAO"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:background="@drawable/radio_states_red"
                     android:button="@null"
                     android:padding="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:textColor="@drawable/radio_text"
                     android:text="NÃO"
-                    android:layout_weight=".335"
+                    android:layout_marginStart="2dp"
                     android:gravity="center"/>
 
             </RadioGroup>
@@ -162,6 +161,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="30dp"
         android:src="@drawable/avmb_h"
+        android:tint="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 

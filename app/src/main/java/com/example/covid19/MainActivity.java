@@ -1,8 +1,10 @@
 package com.example.covid19;
 
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -14,12 +16,11 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private TextView txtQ, txtResult;
-    private Button btnResult, btnReStart;
+    private Button btnResult;
     private ImageButton btnSair;
     private LinearLayout llDiagnostic, llResult;
 
     private int result = 0;
-    private String q1, q2, q3;
 
     int countQ = 0;
 
@@ -30,19 +31,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
         txtQ = findViewById(R.id.txtQ);
         txtResult = findViewById(R.id.txtResult);
         btnResult = findViewById(R.id.btnResult);
-        btnReStart = findViewById(R.id.btnReStart);
         llDiagnostic = findViewById(R.id.llDiagnostic);
         llResult = findViewById(R.id.llResult);
         progressBar = findViewById(R.id.progressBar);
         btnSair = findViewById(R.id.btnSair);
-
-        q1 = "1. Você está com FALTA DE AR?";
-        q2 = "2. Você está com FEBRE?";
-        q3 = "3. Você está com TOSSE?";
-        txtQ.setText(q1);
 
         final RadioGroup group = findViewById(R.id.toggle);
         group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -70,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnReStart.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnReStart).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 llResult.setVisibility(View.GONE);
@@ -81,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 btnSair.setImageResource(R.drawable.ic_check_nok);
                 btnSair.setEnabled(true);
 
-                txtQ.setText(q1);
+                txtQ.setText(getString(R.string.q1));
                 txtResult.setText(String.valueOf(0));
                 progressBar.setProgress(0);
                 countQ=0;
@@ -92,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         btnSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtQ.setText(q1);
+                txtQ.setText(getString(R.string.q1));
                 txtResult.setText(String.valueOf(0));
                 progressBar.setProgress(0);
                 countQ=0;
@@ -107,22 +105,22 @@ public class MainActivity extends AppCompatActivity {
         switch(countQ) {
             case 1:
                 if(rbQ.equals("SIM")){
-                    txtQ.setText(q2);
+                    txtQ.setText(getString(R.string.q2));
                     result = result + 4;
                     progressBar.setProgress(35);
                 } else {
-                    txtQ.setText(q2);
+                    txtQ.setText(getString(R.string.q2));
                     progressBar.setProgress(35);
                 }
                 break;
             case 2:
 
                 if(rbQ.equals("SIM")){
-                    txtQ.setText(q3);
+                    txtQ.setText(getString(R.string.q3));
                     result = result + 4;
                     progressBar.setProgress(70);
                 } else {
-                    txtQ.setText(q3);
+                    txtQ.setText(getString(R.string.q3));
                     progressBar.setProgress(70);
                 }
                 break;
