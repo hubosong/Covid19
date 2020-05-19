@@ -1,21 +1,21 @@
 package com.example.covid19;
 
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView txtQ, txtResult;
     private Button btnResult, btnReStart;
+    private ImageButton btnSair;
     private LinearLayout llDiagnostic, llResult;
 
     private int result = 0;
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         llDiagnostic = findViewById(R.id.llDiagnostic);
         llResult = findViewById(R.id.llResult);
         progressBar = findViewById(R.id.progressBar);
+        btnSair = findViewById(R.id.btnSair);
 
         q1 = "1. Você está com FALTA DE AR?";
         q2 = "2. Você está com FEBRE?";
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 btnResult.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
+                btnSair.setVisibility(View.GONE);
 
                 txtResult.setText(String.valueOf(result));
                 llResult.setVisibility(View.VISIBLE);
@@ -75,7 +77,21 @@ public class MainActivity extends AppCompatActivity {
                 btnResult.setVisibility(View.GONE);
                 llDiagnostic.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.VISIBLE);
+                btnSair.setVisibility(View.VISIBLE);
+                btnSair.setImageResource(R.drawable.ic_check_nok);
+                btnSair.setEnabled(true);
 
+                txtQ.setText(q1);
+                txtResult.setText(String.valueOf(0));
+                progressBar.setProgress(0);
+                countQ=0;
+                result=0;
+            }
+        });
+
+        btnSair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 txtQ.setText(q1);
                 txtResult.setText(String.valueOf(0));
                 progressBar.setProgress(0);
@@ -116,11 +132,15 @@ public class MainActivity extends AppCompatActivity {
                     progressBar.setProgress(100);
 
                     llDiagnostic.setVisibility(View.GONE);
+                    btnSair.setImageResource(R.drawable.ic_check_ok);
+                    btnSair.setEnabled(false);
                     btnResult.setVisibility(View.VISIBLE);
                 } else {
                     progressBar.setProgress(100);
 
                     llDiagnostic.setVisibility(View.GONE);
+                    btnSair.setImageResource(R.drawable.ic_check_ok);
+                    btnSair.setEnabled(false);
                     btnResult.setVisibility(View.VISIBLE);
                 }
                 break;
