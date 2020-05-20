@@ -10,22 +10,23 @@
     <TextView
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="250dp"
         android:padding="30dp"
         android:textColor="#fff"
         android:textStyle="bold"
         android:textSize="30sp"
         android:textAlignment="center"
-        android:background="@drawable/bg19"
+        android:background="@drawable/bg_q"
         app:layout_constraintTop_toTopOf="parent"/>
-
 
     <LinearLayout
         android:id="@+id/llMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitle">
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -87,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:button="@null"
-                    android:background="@drawable/radio_states_green"
+                    android:background="@drawable/radio_green"
                     android:text="SIM"
                     android:layout_marginEnd="2dp"
                     android:padding="10dp"
@@ -99,7 +100,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/radio_states_red"
+                    android:background="@drawable/radio_red"
                     android:button="@null"
                     android:padding="10dp"
                     android:textColor="@drawable/radio_text"
@@ -109,49 +110,86 @@
 
             </RadioGroup>
 
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btnResult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Checar Resultado"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:background="@color/blue"
-            android:visibility="gone"/>
-
-        <LinearLayout
-            android:id="@+id/llResult"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:orientation="vertical"
-            android:layout_margin="16dp"
-            android:visibility="gone">
-
-            <Button
-                android:id="@+id/btnReStart"
+            <TextView
+                android:id="@+id/btnResult"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Refazer Pré-Diagnóstico"
+                android:layout_marginTop="16dp"
+                android:padding="15dp"
+                android:text="R E S U L T A D O"
                 android:textColor="#fff"
+                android:background="@drawable/button_bg"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
+                style="@style/TextAppearance.AppCompat.Small"
                 android:textStyle="bold"
-                android:background="@color/blue"/>
-
-            <TextView
-                android:id="@+id/txtResult"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                style="@style/TextAppearance.AppCompat.Large"
-                android:text="resultado"
-                android:textColor="#000"/>
+                android:visibility="gone"/>
 
         </LinearLayout>
 
 
     </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rlResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:id="@+id/llViewResult"
+            android:layout_width="match_parent"
+            android:layout_height="750dp"
+            android:layout_marginTop="-750dp"
+            android:background="@drawable/bg_r"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/txtResult"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:text="resultado"
+            android:textColor="#fff"
+            android:alpha="0"/>
+
+        <LinearLayout
+            android:id="@+id/llResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:alpha="0">
+
+            <Button
+                android:id="@+id/btnReStart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginEnd="2dp"
+                android:text="Refazer Pré-Diganóstico"
+                android:textColor="#fff"
+                android:background="@drawable/button_bg"/>
+
+            <Button
+                android:id="@+id/btnClose"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="2dp"
+                android:text="SAIR"
+                android:textColor="#fff"
+                android:background="@drawable/button_bg"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <ImageView
         android:layout_width="match_parent"
@@ -162,7 +200,37 @@
         android:layout_marginBottom="30dp"
         android:src="@drawable/avmb_h"
         android:tint="@android:color/darker_gray"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:alpha="0.8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/llViewResult0"
+            android:layout_width="match_parent"
+            android:layout_height="750dp"
+            android:layout_marginTop="-750dp"
+            android:background="@drawable/bg_r"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical" />
+
+        <ImageView
+            android:id="@+id/txtResult0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="100dp"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:src="@drawable/logo"
+            android:alpha="1"/>
+
+    </RelativeLayout>
 
 
 </android.support.constraint.ConstraintLayout>

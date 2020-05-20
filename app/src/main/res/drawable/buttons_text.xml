@@ -3,12 +3,12 @@
 
     <item
         android:state_checked="true"
-        android:drawable="@drawable/radio_on_red"/>
+        android:color="#ff848482"/>
 
     <item
         android:state_pressed="true"
-        android:drawable="@drawable/radio_on_red"/>
+        android:color="#ff848482"/>
 
-    <item android:drawable="@drawable/radio_off"/>
+    <item android:color="#ffffffff" />
 
 </selector>
