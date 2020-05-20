@@ -3,12 +3,12 @@
 
     <item
         android:state_checked="true"
-        android:color="#ffffffff"/>
+        android:color="@color/text_white"/>
 
     <item
         android:state_pressed="true"
-        android:color="#ffffffff"/>
+        android:color="@color/text_white"/>
 
-    <item android:color="#ff848482" />
+    <item android:color="@color/text_gray" />
 
 </selector>

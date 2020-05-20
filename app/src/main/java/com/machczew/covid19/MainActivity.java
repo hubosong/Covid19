@@ -1,5 +1,6 @@
-package com.example.covid19;
+package com.machczew.covid19;
 
+import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -19,12 +19,13 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView txtQ, txtResult;
+    private TextView txtQ;
+    private TextView txtTitleResult, txtResult, txtResultText;
     private TextView btnResult;
     private ImageButton btnSair;
     private LinearLayout llDiagnostic, llResult, llViewResult, llViewResult0;
     private RelativeLayout rlResult;
-    private ImageView txtResult0;
+    private ImageView txtResult0, imgResult;
 
     private int result = 0;
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         llViewResult0 = findViewById(R.id.llViewResult0);
         txtResult0 = findViewById(R.id.txtResult0);
@@ -50,7 +53,12 @@ public class MainActivity extends AppCompatActivity {
         txtResult0.setVisibility(View.GONE);
 
         txtQ = findViewById(R.id.txtQ);
+
+        txtTitleResult = findViewById(R.id.txtTitleResult);
         txtResult = findViewById(R.id.txtResult);
+        txtResultText = findViewById(R.id.txtResultText);
+        imgResult = findViewById(R.id.imgResult);
+
         btnResult = findViewById(R.id.btnResult);
         llDiagnostic = findViewById(R.id.llDiagnostic);
         llResult = findViewById(R.id.llResult);
@@ -81,25 +89,25 @@ public class MainActivity extends AppCompatActivity {
                 rlResult.setVisibility(View.VISIBLE);
                 SlideDown();
 
-                llResult.animate()
-                        .alpha(1f)
-                        .setDuration(2000)
-                        .setListener(null);
+                llResult.animate().alpha(1f).setDuration(1000).setListener(null);
+                txtResult.animate().alpha(1f).setDuration(1000).setListener(null);
+                txtTitleResult.animate().alpha(1f).setDuration(1000).setListener(null);
+                txtResultText.animate().alpha(1f).setDuration(1000).setListener(null);
+                imgResult.animate().alpha(1f).setDuration(1000).setListener(null);
 
-                /*
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        llResult.setAlpha(1);
-                    }
-                }, 600);
-                */
+                if(result >= 7){
+                    txtResult.setText(String.valueOf("Pontuação = "+result+" Pontos"));
+                    txtResultText.setText(getResources().getString(R.string.resultLow));
+                }
+                if (result > 7 && result < 11){
+                    txtResult.setText(String.valueOf("Pontuação = "+result+" Pontos"));
+                    txtResultText.setText(getResources().getString(R.string.resultMiddle));
+                }
+                else {
+                    txtResult.setText(String.valueOf("Pontuação = "+result+" Pontos"));
+                    txtResultText.setText(getResources().getString(R.string.resultHigh));
+                }
 
-                txtResult.setText(String.valueOf("RESULTADO\n"+result+" Pontos"));
-                txtResult.animate()
-                        .alpha(1f)
-                        .setDuration(2000)
-                        .setListener(null);
 
             }
         });
@@ -109,6 +117,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 llResult.setAlpha(0);
                 txtResult.setAlpha(0);
+
+                txtTitleResult.setAlpha(0);
+                txtResultText.setAlpha(0);
+                imgResult.animate().alpha(0).setDuration(500).setListener(null);
+
                 SlideUp();
                 RestartQuestions();
             }
@@ -124,8 +137,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnClose).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                System.exit(0);
+                moveTaskToBack(true);
+                finishAffinity();
             }
         });
 
@@ -138,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
         btnSair.setEnabled(true);
         txtQ.setText(getString(R.string.q1));
         txtResult.setText(String.valueOf(0));
+        txtResultText.setText("");
         progressBar.setProgress(0);
         countQ=0;
         result=0;

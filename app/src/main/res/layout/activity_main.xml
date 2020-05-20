@@ -137,23 +137,63 @@
         android:layout_height="match_parent"
         android:visibility="invisible">
 
+        <!-- android:layout_marginTop="-750dp" -->
         <LinearLayout
             android:id="@+id/llViewResult"
             android:layout_width="match_parent"
             android:layout_height="750dp"
             android:layout_marginTop="-750dp"
-            android:background="@drawable/bg_r"
+            android:background="@drawable/bg_r0"
             android:layout_alignParentTop="true"
             android:orientation="vertical" />
+
+
+        <TextView
+            android:id="@+id/txtTitleResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:text="-----------------\nRESULTADO\n-----------------"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_marginTop="100dp"
+            android:alpha="0"/>
 
         <TextView
             android:id="@+id/txtResult"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_marginTop="30dp"
             style="@style/TextAppearance.AppCompat.Large"
-            android:text="resultado"
+            android:text="PONTUACAO"
             android:textColor="#fff"
+            android:textSize="25sp"
+            android:layout_below="@+id/txtTitleResult"
+            android:alpha="0"/>
+
+        <TextView
+            android:id="@+id/txtResultText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:text="MENSAGEM"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:layout_below="@+id/txtResult"
+            android:alpha="0"/>
+
+        <ImageView
+            android:id="@+id/imgResult"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_check_ok"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/txtResultText"
             android:alpha="0"/>
 
         <LinearLayout
@@ -164,7 +204,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="50dp"
             android:alpha="0">
 
             <Button
@@ -214,7 +254,7 @@
             android:layout_width="match_parent"
             android:layout_height="750dp"
             android:layout_marginTop="-750dp"
-            android:background="@drawable/bg_r"
+            android:background="@drawable/bg_r0"
             android:layout_alignParentTop="true"
             android:orientation="vertical" />
 
@@ -228,7 +268,7 @@
             android:layout_marginBottom="100dp"
             style="@style/TextAppearance.AppCompat.Large"
             android:src="@drawable/logo"
-            android:alpha="1"/>
+            android:alpha="0"/>
 
     </RelativeLayout>
 

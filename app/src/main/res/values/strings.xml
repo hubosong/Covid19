@@ -22,8 +22,23 @@
     <string name="q12">12. Sente PERDA DO OLFATO (cheiros)?</string>
 
     <!-- resultado -->
-    <string name="resultLow">O pré-diagnóstico apresenta sintomas leves. Por favor, MANTENHA O ISOLAMENTO domiciliar e refaça o pré-diagnóstico se houver alterações.</string>
-    <string name="resultMiddle">Você apresenta características de sintomalogias moderado. Por favor, ENTRE EM CONTATO com o Pronto Atendimento mais próximo de sua residência.</string>
-    <string name="resultHigh">Você apresenta características de sintomalogias elvado. Por favor, ENTRE EM CONTATO com o Pronto Atendimento mais próximo de sua residência.</string>
+    <string name="resultLow">
+        <font color='#dddddd' face='sans'><font color='#ffffff'><b>Pré-Diagnóstico</b></font>\n
+            apresenta\n
+            <font color='#ffffff'><b>Sintomas LEVES</b></font>
+        </font>
+    </string>
+    <string name="resultMiddle">
+        <font color='#dddddd' face='sans'><font color='#ffffff'><b>Pré-Diagnóstico</b></font>\n
+            apresenta\n
+            <font color='#ffffff'><b>Sintomas MODERADOS</b></font>
+        </font>
+    </string>
+    <string name="resultHigh">
+        <font color='#dddddd' face='sans'><font color='#ffffff'><b>Pré-Diagnóstico</b></font>\n
+            apresenta\n
+            <font color='#ffffff'><b>Sintomas ELEVADOS</b></font>
+        </font>
+    </string>
 
 </resources>

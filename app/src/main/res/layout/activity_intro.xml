@@ -17,9 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="750dp"
             android:layout_marginTop="-750dp"
-            android:background="@drawable/bg_r"
+            android:background="@drawable/bg_r0"
             android:layout_alignParentTop="true"
-            android:orientation="vertical" />
+            android:orientation="vertical"/>
 
         <ImageView
             android:id="@+id/txtResult"
