@@ -3,41 +3,52 @@
 
     <!-- info -->
     <string name="info">
-        IMPORTANTE: O resultado é gerado a partir das informações que relatar, seguindo as diretrizes do Ministério da Saúde.
-        Este pré-diagnóstico virtual NÃO SUBSTITUI A AVALIAÇÃO CLÍNICA PRESENCIAL por equipe de saúde!
+        <font color='#dddddd' face='sans'>
+            <font color='#ffffff'><b>IMPORTANTE:\n</b></font>
+            O resultado do\n
+            <font color='#ffffff'><b>Pré-Diagnóstico Virtual</b></font>\n
+            é gerado a partir das suas respostas,\n
+            seguindo as diretrizes do\n
+            <font color='#ffffff'><b>Ministério da Saúde</b></font>,
+            \n
+            <br/>
+            sem substituir a avaliação clínica\n
+            por equipe de saúde!
+        </font>
+
     </string>
 
     <!-- sintomas -->
-    <string name="q1">1. Sente FALTA DE AR, DIFICULDADE PARA RESPIRAR?</string>
-    <string name="q2">2. Você está com FEBRE?</string>
-    <string name="q3">3. Você está com TOSSE?</string>
-    <string name="q4">4. Você tem DIFICULDADE para URINAR ou ALTERAÇÃO NA COR/PADRÃO DA URINA?</string>
-    <string name="q5">5. Você tem RASH - MANCHAS ou ERUPÇÕES NA PELE recentes distribuídas pelo corpo ou concentradas em um único local?</string>
-    <string name="q6">6. Sente CANSAÇO, DOR NO CORPO, MAL ESTAR ou SONOLÊNCIA?</string>
-    <string name="q7">7. Sente DOR DE GARGANTA?</string>
-    <string name="q8">8. Sente DOR DE CABEÇA?</string>
-    <string name="q9">9. Tem CORIZA (corrimento nasal) ou NARIZ ENTUPIDO?</string>
-    <string name="q10">10. Tem ESPIRROS?</string>
-    <string name="q11">11. Sente PERDA DO PALADAR (gosto da comida)?</string>
-    <string name="q12">12. Sente PERDA DO OLFATO (cheiros)?</string>
+    <string name="q1">Sente FALTA DE AR?</string>
+    <string name="q2">Está com FEBRE?</string>
+    <string name="q3">Está com TOSSE?</string>
+    <string name="q4">Tem DIFICULDADE para URINAR ou ALTERAÇÃO NA COR/PADRÃO DA URINA?</string>
+    <string name="q5">Está com RASH - MANCHAS ou ERUPÇÕES NA PELE?</string>
+    <string name="q6">Sente CANSAÇO, DOR NO CORPO, MAL ESTAR ou SONOLÊNCIA?</string>
+    <string name="q7">Sente DOR DE GARGANTA?</string>
+    <string name="q8">Sente DOR DE CABEÇA?</string>
+    <string name="q9">Tem CORIZA (corrimento nasal) ou NARIZ ENTUPIDO?</string>
+    <string name="q10">Tem ESPIRROS?</string>
+    <string name="q11">Sente PERDA DO PALADAR (gosto da comida)?</string>
+    <string name="q12">Sente PERDA DO OLFATO (cheiros)?</string>
 
     <!-- resultado -->
     <string name="resultLow">
-        <font color='#dddddd' face='sans'><font color='#ffffff'><b>Pré-Diagnóstico</b></font>\n
-            apresenta\n
-            <font color='#ffffff'><b>Sintomas LEVES</b></font>
+        <font color='#dddddd' face='sans'>O <font color='#ffffff'><b>Pré-Diagnóstico</b></font>\n
+            apresenta características\n
+            para <font color='#ffffff'><b>Sintomas LEVES</b></font>
         </font>
     </string>
     <string name="resultMiddle">
-        <font color='#dddddd' face='sans'><font color='#ffffff'><b>Pré-Diagnóstico</b></font>\n
-            apresenta\n
-            <font color='#ffffff'><b>Sintomas MODERADOS</b></font>
+        <font color='#dddddd' face='sans'>O <font color='#ffffff'><b>Pré-Diagnóstico</b></font>\n
+            apresenta características\n
+            para <font color='#ffffff'><b>Sintomas MODERADOS</b></font>
         </font>
     </string>
     <string name="resultHigh">
-        <font color='#dddddd' face='sans'><font color='#ffffff'><b>Pré-Diagnóstico</b></font>\n
-            apresenta\n
-            <font color='#ffffff'><b>Sintomas ELEVADOS</b></font>
+        <font color='#dddddd' face='sans'>O <font color='#ffffff'><b>Pré-Diagnóstico</b></font>\n
+            apresenta características\n
+            para <font color='#ffffff'><b>Sintomas ELEVADOS</b></font>
         </font>
     </string>
 

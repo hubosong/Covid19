@@ -8,9 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -24,7 +28,6 @@ public class IntroActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         llViewResult = findViewById(R.id.llViewResult);
 
@@ -34,15 +37,24 @@ public class IntroActivity extends AppCompatActivity {
             }
         }, 200);
 
+        final Button btnStart = findViewById(R.id.btnStart);
         final ImageView imgLogo = findViewById(R.id.txtResult);
+        final TextView txtInfo = findViewById(R.id.txtInfo);
+        final LinearLayout llLogos = findViewById(R.id.llLogos);
+
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                imgLogo.setVisibility(View.VISIBLE);
+                imgLogo.animate().alpha(1f).setDuration(1000).setListener(null);
+                txtInfo.animate().alpha(1f).setDuration(1000).setListener(null);
+                llLogos.animate().alpha(1f).setDuration(1000).setListener(null);
+                btnStart.animate().alpha(1f).setDuration(1000).setListener(null);
             }
-        }, 200);
+        }, 300);
 
 
-        findViewById(R.id.btnStart).setOnClickListener(new View.OnClickListener() {
+
+
+        btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
@@ -57,6 +69,7 @@ public class IntroActivity extends AppCompatActivity {
         animate.setFillAfter(true);
         llViewResult.startAnimation(animate);
     }
+
 
     @Override
     public void onBackPressed() {

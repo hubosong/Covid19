@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#eee"
-    tools:context=".MainActivity">
+    tools:context="com.machczew.covid19.MainActivity">
 
     <TextView
         android:id="@+id/txtTitle"
@@ -19,6 +19,15 @@
         android:background="@drawable/bg_q"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <ImageView
+        android:layout_width="280dp"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:src="@drawable/logo"
+        android:alpha="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <LinearLayout
         android:id="@+id/llMain"
         android:layout_width="match_parent"
@@ -26,7 +35,8 @@
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,7 +72,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_margin="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:visibility="visible">
 
             <TextView
@@ -147,17 +160,13 @@
             android:layout_alignParentTop="true"
             android:orientation="vertical" />
 
-
-        <TextView
-            android:id="@+id/txtTitleResult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            style="@style/TextAppearance.AppCompat.Large"
-            android:text="-----------------\nRESULTADO\n-----------------"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:layout_marginTop="100dp"
+        <ImageView
+            android:id="@+id/imgResult"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_result"
+            android:layout_marginTop="150dp"
+            android:layout_centerHorizontal="true"
             android:alpha="0"/>
 
         <TextView
@@ -170,31 +179,48 @@
             android:text="PONTUACAO"
             android:textColor="#fff"
             android:textSize="25sp"
-            android:layout_below="@+id/txtTitleResult"
+            android:layout_below="@+id/imgResult"
             android:alpha="0"/>
 
         <TextView
-            android:id="@+id/txtResultText"
+            android:id="@+id/txtResultLow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="30dp"
             style="@style/TextAppearance.AppCompat.Large"
-            android:text="MENSAGEM"
+            android:text="@string/resultLow"
             android:textColor="#fff"
             android:textSize="25sp"
             android:layout_below="@+id/txtResult"
             android:alpha="0"/>
 
-        <ImageView
-            android:id="@+id/imgResult"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_check_ok"
-            android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/txtResultText"
+        <TextView
+            android:id="@+id/txtResultMiddle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:text="@string/resultMiddle"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:layout_below="@+id/txtResult"
             android:alpha="0"/>
+
+        <TextView
+            android:id="@+id/txtResultHigh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:text="@string/resultHigh"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:layout_below="@+id/txtResult"
+            android:alpha="0"/>
+
 
         <LinearLayout
             android:id="@+id/llResult"
@@ -232,17 +258,17 @@
     </RelativeLayout>
 
     <ImageView
+        android:id="@+id/imgLogoMain"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="30dp"
-        android:src="@drawable/avmb_h"
-        android:tint="@android:color/darker_gray"
+        android:src="@drawable/logo_icon"
         android:alpha="0.8"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="invisible"/>
+        android:visibility="visible"/>
 
 
     <RelativeLayout

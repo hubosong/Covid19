@@ -16,16 +16,16 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView txtQ;
-    private TextView txtTitleResult, txtResult, txtResultText;
+    private TextView txtQ, txtResult, txtResultLow, txtResultMiddle, txtResultHigh;
     private TextView btnResult;
     private ImageButton btnSair;
     private LinearLayout llDiagnostic, llResult, llViewResult, llViewResult0;
     private RelativeLayout rlResult;
-    private ImageView txtResult0, imgResult;
+    private ImageView txtResult0, imgResult, imgLogoMain;
 
     private int result = 0;
 
@@ -54,9 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
         txtQ = findViewById(R.id.txtQ);
 
-        txtTitleResult = findViewById(R.id.txtTitleResult);
         txtResult = findViewById(R.id.txtResult);
-        txtResultText = findViewById(R.id.txtResultText);
+        txtResultLow = findViewById(R.id.txtResultLow);
+        txtResultMiddle = findViewById(R.id.txtResultMiddle);
+        txtResultHigh = findViewById(R.id.txtResultHigh);
         imgResult = findViewById(R.id.imgResult);
 
         btnResult = findViewById(R.id.btnResult);
@@ -66,10 +67,11 @@ public class MainActivity extends AppCompatActivity {
         btnSair = findViewById(R.id.btnSair);
         llViewResult = findViewById(R.id.llViewResult);
         rlResult = findViewById(R.id.rlResult);
+        imgLogoMain = findViewById(R.id.imgLogoMain);
 
         llViewResult.setEnabled(false);
 
-        final RadioGroup group = findViewById(R.id.toggle);
+        RadioGroup group = findViewById(R.id.toggle);
         group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -87,26 +89,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rlResult.setVisibility(View.VISIBLE);
+                imgLogoMain.setVisibility(View.GONE);
                 SlideDown();
 
                 llResult.animate().alpha(1f).setDuration(1000).setListener(null);
                 txtResult.animate().alpha(1f).setDuration(1000).setListener(null);
-                txtTitleResult.animate().alpha(1f).setDuration(1000).setListener(null);
-                txtResultText.animate().alpha(1f).setDuration(1000).setListener(null);
                 imgResult.animate().alpha(1f).setDuration(1000).setListener(null);
 
-                if(result >= 7){
-                    txtResult.setText(String.valueOf("Pontuação = "+result+" Pontos"));
-                    txtResultText.setText(getResources().getString(R.string.resultLow));
+
+                if(result < 8){
+                    txtResult.setText("Pontuação = " + result + " Pontos");
+                    txtResultLow.animate().alpha(1f).setDuration(2000).setListener(null);
                 }
-                if (result > 7 && result < 11){
-                    txtResult.setText(String.valueOf("Pontuação = "+result+" Pontos"));
-                    txtResultText.setText(getResources().getString(R.string.resultMiddle));
+                else if (result >= 8 && result <= 11 ) {
+                    txtResult.setText("Pontuação = " + result + " Pontos");
+                    txtResultMiddle.animate().alpha(1f).setDuration(2000).setListener(null);
+                } else if (result > 11){
+                    txtResult.setText("Pontuação = " + result + " Pontos");
+                    txtResultHigh.animate().alpha(1f).setDuration(2000).setListener(null);
                 }
-                else {
-                    txtResult.setText(String.valueOf("Pontuação = "+result+" Pontos"));
-                    txtResultText.setText(getResources().getString(R.string.resultHigh));
-                }
+
 
 
             }
@@ -118,8 +120,9 @@ public class MainActivity extends AppCompatActivity {
                 llResult.setAlpha(0);
                 txtResult.setAlpha(0);
 
-                txtTitleResult.setAlpha(0);
-                txtResultText.setAlpha(0);
+                txtResultLow.setAlpha(0);
+                txtResultMiddle.setAlpha(0);
+                txtResultHigh.setAlpha(0);
                 imgResult.animate().alpha(0).setDuration(500).setListener(null);
 
                 SlideUp();
@@ -142,6 +145,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        imgLogoMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "\nDesenvolvido por\nRobson Machczew 胡博嵩\n", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -151,10 +160,11 @@ public class MainActivity extends AppCompatActivity {
         btnSair.setEnabled(true);
         txtQ.setText(getString(R.string.q1));
         txtResult.setText(String.valueOf(0));
-        txtResultText.setText("");
         progressBar.setProgress(0);
         countQ=0;
         result=0;
+        imgLogoMain.setVisibility(View.VISIBLE);
+
     }
 
     public void CountQuestions( String rbQ){
@@ -163,24 +173,113 @@ public class MainActivity extends AppCompatActivity {
                 if(rbQ.equals("SIM")){
                     txtQ.setText(getString(R.string.q2));
                     result = result + 4;
-                    progressBar.setProgress(35);
+                    progressBar.setProgress(8);
                 } else {
                     txtQ.setText(getString(R.string.q2));
-                    progressBar.setProgress(35);
+                    progressBar.setProgress(8);
                 }
                 break;
             case 2:
-
                 if(rbQ.equals("SIM")){
                     txtQ.setText(getString(R.string.q3));
                     result = result + 4;
-                    progressBar.setProgress(70);
+                    progressBar.setProgress(16);
                 } else {
                     txtQ.setText(getString(R.string.q3));
-                    progressBar.setProgress(70);
+                    progressBar.setProgress(16);
                 }
                 break;
             case 3:
+                if(rbQ.equals("SIM")){
+                    txtQ.setText(getString(R.string.q4));
+                    result = result + 3;
+                    progressBar.setProgress(24);
+                } else {
+                    txtQ.setText(getString(R.string.q4));
+                    progressBar.setProgress(24);
+                }
+                break;
+            case 4:
+                if(rbQ.equals("SIM")){
+                    txtQ.setText(getString(R.string.q5));
+                    result = result + 3;
+                    progressBar.setProgress(32);
+                } else {
+                    txtQ.setText(getString(R.string.q5));
+                    progressBar.setProgress(32);
+                }
+                break;
+            case 5:
+                if(rbQ.equals("SIM")){
+                    txtQ.setText(getString(R.string.q6));
+                    result = result + 3;
+                    progressBar.setProgress(40);
+                } else {
+                    txtQ.setText(getString(R.string.q6));
+                    progressBar.setProgress(40);
+                }
+                break;
+            case 6:
+                if(rbQ.equals("SIM")){
+                    txtQ.setText(getString(R.string.q7));
+                    result = result + 1;
+                    progressBar.setProgress(48);
+                } else {
+                    txtQ.setText(getString(R.string.q7));
+                    progressBar.setProgress(48);
+                }
+                break;
+            case 7:
+                if(rbQ.equals("SIM")){
+                    txtQ.setText(getString(R.string.q8));
+                    result = result + 1;
+                    progressBar.setProgress(56);
+                } else {
+                    txtQ.setText(getString(R.string.q8));
+                    progressBar.setProgress(56);
+                }
+                break;
+            case 8:
+                if(rbQ.equals("SIM")){
+                    txtQ.setText(getString(R.string.q9));
+                    result = result + 1;
+                    progressBar.setProgress(64);
+                } else {
+                    txtQ.setText(getString(R.string.q9));
+                    progressBar.setProgress(64);
+                }
+                break;
+            case 9:
+                if(rbQ.equals("SIM")){
+                    txtQ.setText(getString(R.string.q10));
+                    result = result + 1;
+                    progressBar.setProgress(72);
+                } else {
+                    txtQ.setText(getString(R.string.q10));
+                    progressBar.setProgress(72);
+                }
+                break;
+            case 10:
+                if(rbQ.equals("SIM")){
+                    txtQ.setText(getString(R.string.q11));
+                    result = result + 1;
+                    progressBar.setProgress(80);
+                } else {
+                    txtQ.setText(getString(R.string.q11));
+                    progressBar.setProgress(80);
+                }
+                break;
+            case 11:
+                if(rbQ.equals("SIM")){
+                    txtQ.setText(getString(R.string.q12));
+                    result = result + 1;
+                    progressBar.setProgress(88);
+                } else {
+                    txtQ.setText(getString(R.string.q12));
+                    progressBar.setProgress(88);
+                }
+                break;
+            case 12:
                 if(rbQ.equals("SIM")){
                     result = result + 1;
                     progressBar.setProgress(100);
@@ -196,6 +295,7 @@ public class MainActivity extends AppCompatActivity {
                     btnResult.setVisibility(View.VISIBLE);
                 }
                 break;
+
             default:
                 break;
         }
