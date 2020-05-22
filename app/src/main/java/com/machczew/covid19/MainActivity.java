@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btnSair;
     private LinearLayout llDiagnostic, llResult, llViewResult, llViewResult0;
     private RelativeLayout rlResult;
-    private ImageView txtResult0, imgResult, imgLogoMain;
+    private ImageView imgResult;
+    private ImageView imgLogoMain;
     private RadioGroup group;
     private ProgressBar progressBar;
 
@@ -50,13 +51,12 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         llViewResult0 = findViewById(R.id.llViewResult0);
-        txtResult0 = findViewById(R.id.txtResult0);
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 SlideUp0();
             }
         }, 100);
-        txtResult0.setVisibility(View.GONE);
+        findViewById(R.id.txtResult0).setVisibility(View.GONE);
 
         txtQ = findViewById(R.id.txtQ);
         txtResult = findViewById(R.id.txtResult);
@@ -103,13 +103,16 @@ public class MainActivity extends AppCompatActivity {
                 if(result < 8){
                     txtResult.setText("Pontuação = " + result + " Pontos");
                     txtResultLow.animate().alpha(1f).setDuration(2000).setListener(null);
+                    btnResult.setEnabled(false);
                 }
                 else if (result >= 8 && result <= 11 ) {
                     txtResult.setText("Pontuação = " + result + " Pontos");
                     txtResultMiddle.animate().alpha(1f).setDuration(2000).setListener(null);
+                    btnResult.setEnabled(false);
                 } else if (result > 11){
                     txtResult.setText("Pontuação = " + result + " Pontos");
                     txtResultHigh.animate().alpha(1f).setDuration(2000).setListener(null);
+                    btnResult.setEnabled(false);
                 }
             }
         });
@@ -165,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
         result=0;
         imgLogoMain.setVisibility(View.VISIBLE);
         EnableRadioButtons();
+        btnResult.setEnabled(true);
     }
 
     public void CountQuestions( String rbQ){
