@@ -1,10 +1,16 @@
 package com.machczew.covid19;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Handler;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.TranslateAnimation;
@@ -20,18 +26,18 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView txtQ, txtResult, txtResultLow, txtResultMiddle, txtResultHigh;
-    private TextView btnResult;
+    private TextView txtQ, txtResult, txtResultLow, txtResultMiddle, txtResultHigh, btnResult;
     private ImageButton btnSair;
     private LinearLayout llDiagnostic, llResult, llViewResult, llViewResult0;
     private RelativeLayout rlResult;
     private ImageView txtResult0, imgResult, imgLogoMain;
+    private RadioGroup group;
+    private ProgressBar progressBar;
 
     private int result = 0;
+    private int countQ = 0;
 
-    int countQ = 0;
-
-    private ProgressBar progressBar;
+    boolean doubleBackPressed = false;
 
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
@@ -53,13 +59,11 @@ public class MainActivity extends AppCompatActivity {
         txtResult0.setVisibility(View.GONE);
 
         txtQ = findViewById(R.id.txtQ);
-
         txtResult = findViewById(R.id.txtResult);
         txtResultLow = findViewById(R.id.txtResultLow);
         txtResultMiddle = findViewById(R.id.txtResultMiddle);
         txtResultHigh = findViewById(R.id.txtResultHigh);
         imgResult = findViewById(R.id.imgResult);
-
         btnResult = findViewById(R.id.btnResult);
         llDiagnostic = findViewById(R.id.llDiagnostic);
         llResult = findViewById(R.id.llResult);
@@ -71,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         llViewResult.setEnabled(false);
 
-        RadioGroup group = findViewById(R.id.toggle);
+        group = findViewById(R.id.toggle);
         group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -96,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
                 txtResult.animate().alpha(1f).setDuration(1000).setListener(null);
                 imgResult.animate().alpha(1f).setDuration(1000).setListener(null);
 
-
                 if(result < 8){
                     txtResult.setText("Pontuação = " + result + " Pontos");
                     txtResultLow.animate().alpha(1f).setDuration(2000).setListener(null);
@@ -108,9 +111,6 @@ public class MainActivity extends AppCompatActivity {
                     txtResult.setText("Pontuação = " + result + " Pontos");
                     txtResultHigh.animate().alpha(1f).setDuration(2000).setListener(null);
                 }
-
-
-
             }
         });
 
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         countQ=0;
         result=0;
         imgLogoMain.setVisibility(View.VISIBLE);
-
+        EnableRadioButtons();
     }
 
     public void CountQuestions( String rbQ){
@@ -287,12 +287,17 @@ public class MainActivity extends AppCompatActivity {
                     btnSair.setImageResource(R.drawable.ic_check_ok);
                     btnSair.setEnabled(false);
                     btnResult.setVisibility(View.VISIBLE);
+
+                    DisableRadioButtons();
+
                 } else {
                     progressBar.setProgress(100);
 
                     btnSair.setImageResource(R.drawable.ic_check_ok);
                     btnSair.setEnabled(false);
                     btnResult.setVisibility(View.VISIBLE);
+
+                    DisableRadioButtons();
                 }
                 break;
 
@@ -300,6 +305,16 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
+    }
+
+    public void DisableRadioButtons(){
+        group.findViewById(R.id.rbSIM).setEnabled(false);
+        group.findViewById(R.id.rbNAO).setEnabled(false);
+    }
+
+    public void EnableRadioButtons(){
+        group.findViewById(R.id.rbSIM).setEnabled(true);
+        group.findViewById(R.id.rbNAO).setEnabled(true);
     }
 
     public void SlideDown(){
@@ -322,6 +337,40 @@ public class MainActivity extends AppCompatActivity {
         animate.setDuration(500);
         animate.setFillAfter(true);
         llViewResult0.startAnimation(animate);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!doubleBackPressed) {
+            this.doubleBackPressed = true;
+
+            Snackbar snackBar = Snackbar.make(findViewById(R.id.clSnackbar), "Para SAIR pressione novamente o botão VOLTAR", Snackbar.LENGTH_LONG);
+            snackBar.getView().setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            snackBar.getView().findViewById(android.support.design.R.id.snackbar_text).setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            snackBar.show();
+
+            /*
+            Snackbar.make(findViewById(R.id.clSnackbar), "Você realmente deseja SAIR?", Snackbar.LENGTH_LONG)
+                    .setAction("SAIR", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            //button action here
+                            System.exit(0);
+                        }
+                    }).setActionTextColor(Color.RED)
+                    .show();
+                    */
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    doubleBackPressed = false;
+                }
+            }, 2000);
+        }
+        else {
+            System.exit(0);
+        }
     }
 
 }
