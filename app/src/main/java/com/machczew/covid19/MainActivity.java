@@ -345,13 +345,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (!doubleBackPressed) {
-            this.doubleBackPressed = true;
+        if (btnResult.isEnabled()){
+            if (!doubleBackPressed) {
+                this.doubleBackPressed = true;
 
-            Snackbar snackBar = Snackbar.make(findViewById(R.id.clSnackbar), "Para SAIR pressione novamente o botão VOLTAR", Snackbar.LENGTH_LONG);
-            snackBar.getView().setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            snackBar.getView().findViewById(android.support.design.R.id.snackbar_text).setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            snackBar.show();
+                Snackbar snackBar = Snackbar.make(findViewById(R.id.clSnackbar), "Para SAIR pressione novamente o botão VOLTAR", Snackbar.LENGTH_LONG);
+                snackBar.getView().setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                snackBar.getView().findViewById(android.support.design.R.id.snackbar_text).setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                snackBar.show();
 
             /*
             Snackbar.make(findViewById(R.id.clSnackbar), "Você realmente deseja SAIR?", Snackbar.LENGTH_LONG)
@@ -365,16 +366,18 @@ public class MainActivity extends AppCompatActivity {
                     .show();
                     */
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    doubleBackPressed = false;
-                }
-            }, 2000);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        doubleBackPressed = false;
+                    }
+                }, 2000);
+            }
+            else {
+                System.exit(0);
+            }
         }
-        else {
-            System.exit(0);
-        }
+
     }
 
 }

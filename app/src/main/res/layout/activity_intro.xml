@@ -141,7 +141,7 @@
             <Button
                 android:id="@+id/btnStart"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:text="I N I C I A R"
                 android:textColor="#fff"
                 android:textStyle="bold"
