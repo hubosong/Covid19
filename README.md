@@ -1,5 +1,5 @@
 # Covid19
-Desenvolvido por Robson Machczew
+Desenvolvido por Robson Machczew usando Android.
 
 O APP realiza um pré-diagnóstico de COVID-19 por meio de pontuação providos por instituições públicas durante realização de outro projeto.<br/>
 
